@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para ti</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3b3b3b;
+            color: #121212;
+            font-family: 'Special Elite', monospace;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- Fondo estilo pergamino --- */
+        .paper-background {
+            position: absolute;
+            inset: 0;
+            background-color: #fcf8e8; /* Color de pergamino claro */
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23e1d7c4" fill-opacity=".3"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 10h20v2H24zM22 24h20v2H22z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            z-index: -1;
+            /* Animación sutil de desvanecimiento para el fondo */
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            background-color: #fffaf0; /* Color de papel un poco más cálido */
+            border: 5px solid #c9b19e; /* Borde de un tono más oscuro */
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            position: relative;
+            overflow-y: auto;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes slideUpIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 20px;
+            color: #5d4a3b; /* Color de tinta para el título */
+            border-bottom: 2px solid #c9b19e;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            white-space: pre-wrap;
+            text-align: left;
+            color: #3d2f23; /* Color de tinta para el texto */
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* --- Estilo del botón de regreso --- */
+        .back-button {
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: #c9b19e;
+            color: #3d2f23;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Special Elite', monospace;
+            border: 2px solid #5d4a3b;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        .back-button:hover {
+            background-color: #5d4a3b;
+            color: #fffaf0;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .card-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-background"></div>
+    <div class="card-container">
+        <h1>Para May, con cariño</h1>
+        
+        <p>
+            Hola May, en primer lugar, aunque virtual, esta es la primera
+            carta que hago, que no lo niego, hay demasiadas cosas que no 
+            he podido darte, el propósito de la carta es decir cosas que tal
+            vez no te pude confesar antes.
+
+            Mira, no sé como me veas, tal vez como un soñador, tal vez como 
+            alguien a quien ya no quieres ver, pero quiero dejar clara mi 
+            huella, y pues, te amo, Maythe. Sé que la gente no se enamora a
+            primera vista, pero desde la vez que te vi, supe que quería que 
+            seas tú, tal vez esperaba con el tiempo que vieras que, aunque me
+            hiciste cosas que tal vez no me merecía, o quien sabe y sí, el punto
+            es, que te sigue queriendo más que ayer pero no más que mañana,
+            pensé que podía no pensar en ti, pero desde que nos conocemos, no he 
+            tenido un solo día sin pensar en ti, y sí, cambié, he cambiado y no 
+            conoces como soy ahora, y volví con la ilusión de que tal vez te de 
+            curiosidad, o por el recuerdo, intentes algo, aunque sea lo mínimo
+            porque pensé que era un recuerdo feliz, pero tal vez no es así, sé que 
+            tomas distancia porque ajá, pero parece más desprecio a distancia, y sí
+            no es una queja, yo sabía que podía pasar eso, y sin embargo quiero 
+            seguir intentadolo, porque para que algo cambie, hay que hacer algo, y 
+            esperaba que me des esa oportunidad, pero ahora tú tienes el control, 
+            bueno siempre, tú decides al final del día si quieres dejarme
+            intentarlo, tal vez por ver mi terquedad o lo mucho que quiero estar
+            contigo, o decides si ya no, que sí, es lo que decidirás pero, aunque 
+            dije que no, qué dice que no surjan las chispitas mágicas? Mi intención 
+            no es arruinar tu día especia, si por mí
+            fuese hubiese desaparecido por completo pero no puedo, lo intenté pero
+            solo quiero volver a estar contigo, pero esta vez según tomes una 
+            decisión.
+            Prometo esforzarme para acatarla.
+
+            Y no miento, esto es complicado, tenerlo todo y luego no tener nada 
+            es...duro, porque te amo, y bueno, tal vez cambie de parecer, tal
+            vez no, eso no lo sabremos hasta que pase, y no puedo evitar imaginar
+            que estamos juntos, que salimos, que te pude dar los regalos que 
+            preparé para ti, o que volvemos a hacer las cosas que hacíamos juntos, 
+            el sonido de ardilla, el "labios secos" o cualquier otra cosa que está
+            en nuestro chat o mis recuerdos, sé que cada que piense en la casa de
+            Olmedo es igual a pensar en ti, y me frustra pensar en cómo llegamos a
+            esto, qué hice mal, qué no hice, y cuando estoy muy mal solo pienso en 
+            si en verdad me quisiste, y sé que la respuesta es sí, pero yo imagino 
+            mi querer, y bueno, de hecho estoy viendo a una psicóloga, o la veré 
+            pronto al menos, espero poder mejorar un poco eso, pero mi mente es mi 
+            mayor enemiga, siempre he pensado que la mayor fortaleza de los héroes 
+            es su mayor debilidad, y quiero que sepas que a pesar de todo, no puedo 
+            ni te veré con ojos de maldad o piensamientos malos, quiera o no, no 
+            puedo pensar cosas malas de ti, solo puedo pensar que, sí en algún año 
+            quieres volver, estoy seguro que te recibiré con los brazoa abiertos, 
+            porque te extraño ayer, hoy y siempre, y aunque no me quieras, yo haría 
+            de todo para recordarte nuestros mejores momentos, o volver a 
+            enamorarte porque cuando se quiere se puede, y si tú no quieres, 
+            pero yo sí, existe posibilidad de lograrlo. No importa si tengo que
+            esperar años si tengo que hacer lo que sea, rogarte, intrigarte o algo, 
+            estaría dipuesto solo por ti, porque sé que lo vales.
+
+            Lamento no haber cumplido con los estándares que tienes, sé que me 
+            esforzaré para cumplirlo aunque ya no hablemos, porque siempre te 
+            estaré esperando, disculpa si crees que fui un error o una mala 
+            decisión que no sabías como terminar, espero algún día enseñarte 
+            todo de mí, hasta entonces seré paciente, te amo, Maythe.
+        </p>
+        
+        <p class="signature">
+            Con mucho cariño<br>
+            Eduardo
+        </p>
+
+        <a href="/index.html" class="back-button">Volver al inicio</a>
+    </div>
+</body>
+</html>

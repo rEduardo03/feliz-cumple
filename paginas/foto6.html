@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Mensaje Especial! ✨</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Fondo Animado para Páginas de Detalle --- */
+        .animated-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(-45deg, #1a1a1a, #262626, #1f1f1f, #2c2c2c);
+            background-size: 400% 400%;
+            animation: moverFondoSutil 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes moverFondoSutil {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Contenedor principal para la foto y el mensaje --- */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 90%;
+            width: 100%;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInContent 1s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInContent {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-container {
+            position: relative;
+            max-width: 45vw;
+            max-height: 70vh;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Efecto de brillo para la foto */
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .photo-container:hover::before {
+            opacity: 1;
+        }
+
+        .photo-container:hover img {
+            transform: scale(1.05); /* Zoom */
+        }
+
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px 40px;
+            border-radius: 10px;
+            max-width: 45vw;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .message-box h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .message-box p {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            line-height: 1.6;
+            margin: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .back-button {
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: rgba(128, 128, 128, 0.4);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(128, 128, 128, 0.6);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 30%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-20deg);
+            transition: left 0.5s ease-in-out;
+        }
+
+        .back-button:hover::before {
+            left: 120%;
+        }
+
+        /* Logo de la carta en la esquina inferior derecha */
+        .card-logo {
+            position: fixed; /* Posición fija para que siempre esté en la esquina */
+            bottom: 30px; /* Separación del borde inferior */
+            right: 30px; /* Separación del borde derecho */
+            width: 70px; /* Tamaño del logo */
+            height: 70px;
+            border-radius: 50%; /* Para que sea circular */
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Indica que es un elemento clicable */
+            z-index: 10; /* Asegura que esté por encima de otros elementos */
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo sutil para la carta */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 2s; /* Aparece un poco después del contenido */
+        }
+
+        .card-logo:hover {
+            transform: scale(1.2) rotate(5deg); /* Zoom y ligera rotación al pasar el cursor */
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .card-logo img {
+            width: 80%; /* Ajusta el tamaño de la imagen dentro del círculo */
+            height: 80%;
+            object-fit: contain;
+        }
+
+
+        /* Media queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .photo-container, .message-box {
+                max-width: 90vw;
+            }
+
+            .message-box {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .card-logo {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="content-wrapper">
+        <div class="photo-container">
+            <img src="/img/foto66.jpg" alt="Foto de Cumpleaños">
+        </div>
+
+        <div class="message-box">
+            <h1>Esta leela al final</h1>
+            <p>
+                Sí, es como si fuese ayer, es como si el tiempo estuviese congelado,
+                tú ya no lo ves así, pero te aseguro que en esa foto están los pensamientos
+                más sinceros que 2 personas pudieron llegar a tener en la casa de Olmedo.
+                Sí, ya no soy nada, lo sé, al menos intenté recuperarlo, porque yo lo veo
+                no como algo pasajero, para mí significó todo, llámame infante, o ridículo,
+                pero te supe querer, me conozco, y perdón por ser esa piedra en el zapato,
+                que aunque la quites, vuelve a aparecer cada cierto tiempo, intentaré no hacerlo,
+                no más, pero así como en esa foto, mis pensamientos más sinceros ahora solo es
+                que te vaya bien, y tal vez algún día te gane la nostalgia, nunca está de
+                más creer, pero después de todo.. <br>
+                ¿Fue, es o será un feliz cumpleaños?
+            </p>
+        </div>
+    </div>
+
+    <a href="carta.html" class="card-logo">
+        <img src="/img/carta.png" alt="Abrir carta">
+    </a>
+
+    <a href="/index.html" class="back-button">Volver al inicio</a>
+
+</body>
+</html>
